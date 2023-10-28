@@ -28,7 +28,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;1,500&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="/styles/styles.css">
 
     <title>NewsNest | <%= categoryName %>
     </title>
@@ -83,15 +83,16 @@
     </header>
 
     <!-- header banner -->
-    <div class="catgeory-header-banner">
-        <img src="banner_image<%=categoryNumber%>.jpg" alt="Banner Image">
-    </div>
+    <div class="category-banner" style="background-image: url('/assets/banner_image<%= categoryNumber %>.jpg');">
+        <div class="categories--Titlebox">
+            <h1 class="d-flex justify-content-center align-items-center">
+                <%= categoryName %>
+            </h1>
+        </div>
+    </div> 
 
     <!-- Categories -->
     <div class="allArticle-container container">
-        <h2 class="section-heading text-center mb-5">
-            <%= categoryName %>
-        </h2>
         <div class="row">
             <div class="col-4">
                 <div class="card">

@@ -147,7 +147,8 @@ app.get('/categories/:categoryName', (req, res) => {
         .split(' ')
         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' ');
-    const categoryNumber = categoryMap[categoryName];
+    const categoryNumber = categoryMap.get(categoryName);
+    console.log(categoryNumber);
     res.render('categories', { categoryName, categoryNumber, loggedIn, username });
 });
 

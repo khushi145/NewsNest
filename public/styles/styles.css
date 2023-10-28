@@ -69,6 +69,32 @@ header {
     color: #f48840;
 }
 
+
+.user-profile > .dropdown > a{
+    text-decoration: none;
+}
+
+.user-profile > .dropdown > a::after{
+    color: #20232e;
+}
+
+.user-profile > .dropdown > a > i{
+    font-size: 1.5rem;
+    color: #20232e;
+}
+
+.profile-menu{
+    margin-top: 0.5rem;
+}
+
+.profile-menu--item{
+    padding-left: 0;
+    color: #20232e;
+}
+
+.profile-menu--item:hover{
+    color: #fb9857;
+}
 /* carousel */
 
 .carousel--Titlebox{
@@ -284,6 +310,34 @@ header {
     padding-left: 1rem;
     text-decoration: underline;
     color: #20232e;
+}
+
+.category-banner{
+    /* background-image: url("/assets/banner_image9.jpg"); */
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 70vh; /* change values accordingly */
+    position: relative;
+}
+
+.categories__banner-image{
+    width: 100%;
+    height: 100%;
+}
+
+.categories--Titlebox{
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5466561624649859) 50%, rgba(255,255,255,0) 100%);
+    color: white;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.categories--Titlebox h1{
+    font-size: 8rem;
+    height: 100%;
 }
 
 /* login */
