@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100;8..144,500;8..144,600;8..144,800;8..144,1000&display=swap"
+        rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;1,500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <title>NewsNest | Pricing</title>
+</head>
+
+<body>
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg sticky-top">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <h2>NewsNest<em>.</em></h2>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/#about">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/subscribe">Pricing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#footer">Contact Us</a>
+                        </li>
+                        <% if (loggedIn) { %>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/logout">Logout</a>
+                            </li>
+                            <li class="nav-item">
+                                <%= username %>
+                            </li>
+                            <% } else { %>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/login">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/signup">Signup</a>
+                                </li>
+                                <% } %>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container hero-container mt-5">
+        <h2 class="section-heading text-center">Choose your subscription plan</h2>
+        <div class="wrapper-pricing">
+            <div class="container">
+                <div class="row">
+                    <div class="col price--wrapper">
+                        <div class="price--free-wrapper">
+                            <div class="content--wrapper">
+                                <div class="price--text text-center">Free trial</div>
+                                <hr>
+                                <div class="price--pricing text-center"><span>FREE</span></div>
+                                <ul class="price--offers">
+                                    <li>Up to 2 users</li>
+                                    <li>No support</li>
+                                    <li>Limited statistic</li>
+                                </ul>
+                            </div>
+                            <div class="d-flex justify-content-center align-items-center mb-5">
+                                <button class="btn btn--start-trial">Start Trial</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col price--wrapper">
+                        <div class="price--free-wrapper">
+                            <div class="content--wrapper">
+                                <div class="price--text text-center">Basic</div>
+                                <hr>
+                                <div class="price--pricing text-center"><span>Rs 499</span>/year</div>
+                                <ul class="price--offers">
+                                    <li>Up to 2 users</li>
+                                    <li>No support</li>
+                                    <li>Limited statistic</li>
+                                    <li>Limited statistic</li>
+                                </ul>
+                            </div>
+                            <div class="d-flex justify-content-center align-items-center mb-5">
+                                <button class="btn btn--start-trial">Get Started</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col price--wrapper">
+                        <div class="price--free-wrapper">
+                            <div class="content--wrapper">
+                                <div class="price--text text-center">Premium</div>
+                                <hr>
+                                <div class="price--pricing text-center"><span>Rs 899</span>/year</div>
+                                <ul class="price--offers">
+                                    <li>Up to 2 users</li>
+                                    <li>No support</li>
+                                    <li>Limited statistic</li>
+                                    <li>Limited statistic</li>
+                                    <li>Limited statistic</li>
+                                </ul>
+                            </div>
+                            <div class="d-flex justify-content-center align-items-center mb-5">
+                                <button class="btn btn--start-trial">Get Started</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer" class="text-light py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>NewsNest.</h3>
+                    <p>Your trusted source for the latest news and updates.</p>
+                </div>
+                <div class="col-md-3">
+                    <h4>Quick Links</h4>
+                    <ul class="list-unstyled footer-nav">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="signup.html">Signup</a></li>
+                        <li><a href="#footer">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h4>Contact</h4>
+                    <address>
+                        123 News Street<br>
+                        News City, 12345<br>
+                        Email: info@newsnest.com<br>
+                        Phone: (123) 456-7890
+                    </address>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
