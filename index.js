@@ -15,6 +15,7 @@ app.set('views', __dirname + '/views');
 
 let loggedIn = false;
 let username = "";
+let userEmail = "";
 
 const categoryMap = new Map([
     ['Business & Finance', 1],
@@ -100,15 +101,20 @@ app.get('/login', (req, res) => {
 
 app.get('/logout', (req, res) => {
     loggedIn = false;
+    username = "";
+    userEmail = "";
     res.redirect('/');
 });
 
 app.post("/login", async (req, res) => {
     const check = await collection.findOne({ email: req.body.email })
-
-    if (check.password === req.body.password) {
+    if (check === null) {
+        res.redirect('/login')
+    }
+    else if (check.password === req.body.password) {
         loggedIn = true;
         username = check.firstName;
+        userEmail = check.email;
         res.redirect('/');
     }
     else {
@@ -125,6 +131,7 @@ app.post("/signup", async (req, res) => {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         phoneNumber: req.body.phoneNumber,
+        subscription: req.body.subscription,
         email: req.body.email,
         password: req.body.password
     }
@@ -132,9 +139,34 @@ app.post("/signup", async (req, res) => {
     res.redirect('/login');
 });
 
-app.get('/subscribe', (req, res) => {
-    res.render('subscribe', { loggedIn, username });
+app.get('/subscribe', async (req, res) => {
+    try {
+        const user = await collection.findOne({ email: userEmail });
+        if (user) {
+            res.render('subscribe', { subscription: user.subscription, loggedIn, username });
+        } else {
+            res.render('subscribe', { subscription: "User not found", loggedIn, username });
+        }
+    } catch (error) {
+        console.error(error);
+        res.render('subscribe', { subscription: "User not found error", loggedIn, username });
+    }
 });
+
+
+app.post('/subscribe', async (req, res) => {
+    try {
+        const result = await collection.updateOne(
+            { email: userEmail },
+            { $set: { subscription: req.body.newPlan } }
+        );
+        res.redirect('/subscribe');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 
 app.get('/allArticle', (req, res) => {
     res.render('allArticle', { loggedIn, username });
@@ -148,7 +180,6 @@ app.get('/categories/:categoryName', (req, res) => {
         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' ');
     const categoryNumber = categoryMap.get(categoryName);
-    console.log(categoryNumber);
     res.render('categories', { categoryName, categoryNumber, loggedIn, username });
 });
 
