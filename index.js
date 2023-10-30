@@ -29,6 +29,18 @@ const categoryMap = new Map([
     ['Education', 9]
 ]);
 
+const categoryKeywordMap = new Map([
+    ['Business & Finance', 'business'],
+    ['Crime & Justice', 'crime'],
+    ['Technology', 'technology'],
+    ['Politics', 'politics'],
+    ['Sports', 'sports'],
+    ['Medicine & Health', 'health'],
+    ['Entertainment', 'bollywood'],
+    ['Culture & Lifestyle', 'culture'],
+    ['Education', 'education']
+]);
+
 //news API
 
 const apiKey = '5bad35b281884e4094573cf80266139d';
@@ -167,12 +179,16 @@ app.post('/subscribe', async (req, res) => {
     }
 });
 
-
-app.get('/allArticle', (req, res) => {
-    res.render('allArticle', { loggedIn, username });
+app.get('/allArticle', async (req, res) => {
+    newsResponse = await axios.get('https://newsapi.org/v2/everything?q=india&apiKey=5bad35b281884e4094573cf80266139d');
+    newsData = newsResponse.data.articles;
+    const shuffledNews = shuffle(newsData);
+    const allNews = shuffledNews.slice(0, 48);
+    res.render('allArticle', { news: allNews, loggedIn, username });
 });
 
-app.get('/categories/:categoryName', (req, res) => {
+app.get('/categories/:categoryName', async (req, res) => {
+    //to get category name and banner img
     let categoryName = req.params.categoryName;
     categoryName = categoryName
         .replace(/-/g, ' ')
@@ -180,7 +196,14 @@ app.get('/categories/:categoryName', (req, res) => {
         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' ');
     const categoryNumber = categoryMap.get(categoryName);
-    res.render('categories', { categoryName, categoryNumber, loggedIn, username });
+    //to get category articles
+    const categoryWords = categoryKeywordMap.get(categoryName);
+    const apiLink = 'https://newsapi.org/v2/everything?q=india AND ' + categoryWords + '&apiKey=5bad35b281884e4094573cf80266139d';
+    newsResponse = await axios.get(apiLink);
+    newsData = newsResponse.data.articles;
+    const shuffledNews = shuffle(newsData);
+    const categoryNews = shuffledNews.slice(0, 20);
+    res.render('categories', { categoryName, categoryNumber, news: categoryNews, loggedIn, username });
 });
 
 // Start the server
