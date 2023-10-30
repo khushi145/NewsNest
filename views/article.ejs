@@ -189,6 +189,32 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script>
+        function formatArticleContent() {
+            const element = document.querySelector('.article-content');
+            if (element) {
+                const text = element.textContent;
+                const formattedText = paragraphed(text);
+                element.innerHTML = formattedText;
+            }
+        }
+
+        function paragraphed(text) {
+            const sentences = text.split(/(\.|!|\?)(?=\s)/g);
+            const sentencesPerBlock = 10;
+            let result = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+            for (let i = 0; i < sentences.length; i++) {
+                result += sentences[i];
+                if ((i + 1) % sentencesPerBlock === 0) {
+                    result += '<br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+                }
+            }
+            return result;
+        }
+
+        formatArticleContent();
+    </script>
+
 </body>
 
 </html>

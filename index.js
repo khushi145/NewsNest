@@ -103,7 +103,7 @@ function shuffle(array) {
     return array;
 }
 
-//function to article from url
+//function to return article from url
 async function extractArticleContent(url) {
     try {
         const response = await axios.get(url);
