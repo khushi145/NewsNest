@@ -63,23 +63,27 @@
                         <% if (loggedIn) { %>
                             <li class="nav-item user-profile d-flex justify-content-center align-items-center">
                                 <div class="dropdown">
-                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <a class="dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                        aria-expanded="false">
                                         <i class="fa-solid fa-user"></i>
                                     </a>
                                     <ul class="dropdown-menu profile-menu p-3">
-                                        <li><h5>Welcome,&nbsp;<%= username %></h5></li>
+                                        <li>
+                                            <h5>Welcome,&nbsp;<%= username %>
+                                            </h5>
+                                        </li>
                                         <li><a class="profile-menu--item" href="/logout">Logout</a></li>
                                     </ul>
                                 </div>
                             </li>
-                        <% } else { %>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/login">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/signup">Signup</a>
-                            </li>
-                        <% } %>
+                            <% } else { %>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/login">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/signup">Signup</a>
+                                </li>
+                                <% } %>
                     </ul>
                 </div>
             </div>
@@ -161,14 +165,28 @@
         <div class="container">
             <h2 class="section-heading text-center">About Us</h2>
             <p class="text-justify">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut metus id libero vehicula accumsan.
-                Fusce at urna velit. Nullam varius, dolor nec auctor vestibulum, metus ante ullamcorper massa, vel
-                interdum ex massa eu justo. Phasellus ac mauris sit amet purus iaculis tristique.
+                Welcome to <em><strong>NewsNest</strong></em>, your trusted source for the latest news and information
+                from around the world. We are passionate about delivering accurate, reliable, and diverse news content
+                to keep you informed and engaged.
             </p>
             <p class="text-justify">
-                Donec auctor nec augue at ultrices. In hac habitasse platea dictumst. Sed sit amet luctus ex. Sed
-                ultricies nulla eget est sollicitudin, eget cursus mi venenatis. Integer a sapien non dolor iaculis
-                suscipit sit amet eu purus. Sed suscipit nulla eu nisl tristique scelerisque.
+                At NewsNest, our mission is to empower individuals with the knowledge they need to make informed
+                decisions and stay connected to the ever-changing world. We are committed to providing you with the most
+                relevant, up-to-date, and thought-provoking news, covering a wide range of topics and
+                interests.<br><br>
+            </p>
+            <h2 class="section-heading text-center">What Sets Us Apart</h2>
+            <p class="text-justify">
+                <strong>Diverse Coverage:</strong> We cover a wide spectrum of categories, from business and finance to
+                technology, sports, entertainment, health, and beyond. Our goal is to cater to a broad audience with
+                diverse interests.<br><br>
+
+                <strong>Quality Journalism:</strong> We believe in the power of journalism to inform and educate. Our
+                team of experienced writers and editors is dedicated to delivering high-quality, unbiased news
+                stories.<br><br>
+
+                <strong>User-Centric Experience:</strong> Our user-friendly platform ensures that you can access news
+                effortlessly. Explore a wealth of articles, features, and in-depth analyses with ease.
             </p>
         </div>
     </section>
@@ -256,8 +274,8 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 </body>

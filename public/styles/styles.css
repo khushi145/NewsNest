@@ -150,6 +150,10 @@ header {
     font-size: 1.3rem;
 }
 
+#about>.container .text-justify strong {
+    color: #f48840;
+}
+
 /* News */
 
 .news-card {
