@@ -177,10 +177,6 @@ header {
     margin-bottom: 2rem;
 }
 
-.hero-container {
-    /* height: 100vh; */
-}
-
 .price--wrapper {
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     margin-right: 1.5rem;
@@ -285,6 +281,49 @@ header {
     margin-top: 4rem;
     padding-top: 2rem;
 }
+
+.allArticle-container .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.allArticle-container .col-4 {
+    flex: 1 0 33.33%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+.allArticle-container .card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.allArticle-container .card-img-top {
+    height: 16.25rem;
+    object-fit: cover;
+}
+
+.allArticle-container .card-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.allArticle-container .card-title {
+    margin-bottom: auto;
+}
+
+.allArticle-container .card-text {
+    flex-grow: 1;
+}
+
+.allArticle-container .btn--read-article {
+    margin-top: auto;
+    width: fit-content;
+}
+
 
 /* categories */
 
