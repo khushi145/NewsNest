@@ -19,6 +19,7 @@ let loggedIn = false;
 let fetched = false;
 let username = "";
 let userEmail = "";
+let subPlan = "";
 
 //needed for displaying different categories with category.ejs
 const categoryImageMap = new Map([
@@ -128,7 +129,7 @@ app.get('/', async (req, res) => {
         }
         const shuffledNews = shuffle(newsData);
         const randomNews = shuffledNews.slice(0, 10);
-        res.render('index', { news: randomNews, loggedIn, username });
+        res.render('index', { news: randomNews, subscription: subPlan, loggedIn, username });
     } catch (error) {
         res.status(500).send('Error fetching news data');
     }
@@ -149,9 +150,9 @@ app.get('/article/:title', async (req, res) => {
         extractArticleContent(articleURL) //extracts and returns articleContent
             .then(articleContent => {
                 if (articleContent) {
-                    res.render('article', { otherNews: randomNews, news: articleData, content: articleContent, loggedIn, username });
+                    res.render('article', { otherNews: randomNews, news: articleData, content: articleContent, subscription: subPlan, loggedIn, username });
                 } else {
-                    res.render('article', { otherNews: randomNews, news: articleData, content: articleData.content, loggedIn, username });
+                    res.render('article', { otherNews: randomNews, news: articleData, content: articleData.content, subscription: subPlan, loggedIn, username });
                 }
             })
             .catch(error => {
@@ -164,7 +165,12 @@ app.get('/article/:title', async (req, res) => {
 
 //login
 app.get('/login', (req, res) => {
-    res.render('login', { loggedIn, username });
+    if (loggedIn === false) {
+        res.render('login');
+    }
+    else {
+        res.redirect('/');
+    }
 });
 
 //logout
@@ -185,6 +191,7 @@ app.post("/login", async (req, res) => {
         loggedIn = true;
         username = check.firstName;
         userEmail = check.email;
+        subPlan = check.subscription;
         res.redirect('/');
     }
     else {
@@ -194,7 +201,12 @@ app.post("/login", async (req, res) => {
 
 //signup
 app.get('/signup', (req, res) => {
-    res.render('signup', { loggedIn, username });
+    if (loggedIn === false) {
+        res.render('signup');
+    }
+    else {
+        res.redirect('/');
+    }
 });
 
 
@@ -214,17 +226,18 @@ app.post("/signup", async (req, res) => {
 
 //pricing (when logged in or logged out)
 app.get('/subscribe', async (req, res) => {
-    try {
-        const user = await collection.findOne({ email: userEmail });
-        if (user) {
-            res.render('subscribe', { subscription: user.subscription, loggedIn, username });
-        } else {
-            res.render('subscribe', { subscription: "User not found", loggedIn, username });
-        }
-    } catch (error) {
-        console.error(error);
-        res.render('subscribe', { subscription: "User not found error", loggedIn, username });
-    }
+    // try {
+    //     const user = await collection.findOne({ email: userEmail });
+    //     if (user) {
+    //         res.render('subscribe', { subscription: user.subscription, loggedIn, username });
+    //     } else {
+    //         res.render('subscribe', { subscription: "User not found", loggedIn, username });
+    //     }
+    // } catch (error) {
+    //     console.error(error);
+    //     res.render('subscribe', { subscription: "User not found error", loggedIn, username });
+    // }
+    res.render('subscribe', { subscription: subPlan, loggedIn, username });
 });
 
 //pricing (when logged in and updating subscription plan)
@@ -245,7 +258,7 @@ app.post('/subscribe', async (req, res) => {
 app.get('/allArticle', async (req, res) => {
     const shuffledNews = shuffle(newsData);
     const allNews = shuffledNews.slice(0, 48);
-    res.render('allArticle', { news: allNews, loggedIn, username });
+    res.render('allArticle', { news: allNews, subscription: subPlan, loggedIn, username });
 });
 
 //category page
