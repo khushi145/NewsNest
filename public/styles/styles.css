@@ -239,6 +239,65 @@ header {
     padding: 0.8rem 0;
 }
 
+/* subscription: if logged in */
+.left-box{
+    /* background-color: red; */
+}
+
+.right-box{
+    /* background-color: blue; */
+}
+
+.inner-box{ 
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 2rem;
+    border-radius: 1.2rem;
+}
+
+.inner-box > h3{
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.plans ul{
+    list-style: none;
+}
+
+.plans > ul > li{
+    border-top: 0.2px solid #babcbe;
+}
+
+.price--pricing-login>span{
+    font-weight: 600;
+}
+
+.price--offers-login > li:not(:last-child){
+    padding-bottom: 1.2rem;
+}
+
+.h-max{
+    height: 100%;
+}
+
+.current{
+    border-bottom: 0.2px solid #babcbe;
+}
+
+.plan--text{
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+#currentPlan{
+    font-size: 1.4rem;
+}
+
+.newPlan{
+    margin-bottom: 2rem;
+}
+
+
 /* Articles */
 
 .article-container {
@@ -423,4 +482,10 @@ footer .container {
 
 .footer-nav>li>a:hover {
     color: #f48840;
+}
+
+/* helpers */
+
+.section-mr{
+    margin: 5rem;
 }
