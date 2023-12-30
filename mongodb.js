@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-var db = mongoose.connect('mongodb+srv://khushi2001:khushi123@cluster0.h5ec2bd.mongodb.net/NewsNest')
+var db = mongoose.connect('') //add mongodb link
     .then(() => {
         console.log("Database connected");
     })
